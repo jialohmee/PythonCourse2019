@@ -20,13 +20,16 @@ class Portfolio():	# create portfolio class
 		return self.cash
 
 	def buyStock(self, stock, amount_shares):
-		if stock not in self.stock.keys():
-			self.stock[stock.name] = amount_shares
-		else:
-			self.stock[stock.name] += amount_shares
-		self.cash -= stock.price * amount_shares
-		self.transactions.append("Bought " + str(amount_shares) + 
+		if self.cash >= stock.price * amount_shares:
+			self.cash -= stock.price * amount_shares
+			self.transactions.append("Bought " + str(amount_shares) + 
 			" shares of " + str(stock.name) + " at $" + str(format(stock.price, '.2f')) + " per share")
+			if stock not in self.stock.keys():
+				self.stock[stock.name] = amount_shares
+			else:
+				self.stock[stock.name] += amount_shares
+		else:
+			print("You do not have enough cash")
 
 	def buyMutualFund(self, fund, amount_shares):
 		if fund not in self.mf.keys():
