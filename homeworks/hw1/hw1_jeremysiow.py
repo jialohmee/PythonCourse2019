@@ -61,7 +61,7 @@ class Portfolio():	# create portfolio class
 
 	def sellMutualFund(self, fund, amount_shares):
 		if fund.name in self.mf.keys():
-			self.mf[fund.name] -= float(format(amount_shares, '.2f'))
+			self.mf[fund.name] -= amount_shares
 			sale_price = random.uniform(0.9, 1.2)
 			self.cash += sale_price * amount_shares
 			self.transactions.append("Sold " + str(amount_shares) + " shares of " + str(fund.name) +
@@ -91,7 +91,7 @@ class Bond(Portfolio):
 
 # Should perform the following:
 portfolio = Portfolio()
-portfolio.addCash(5.50)
+portfolio.addCash(1000)
 s = Stock("HFH", 20)
 portfolio.buyStock(s, 5)
 mf1 = MutualFund("BRT")
@@ -103,3 +103,4 @@ portfolio.sellMutualFund(mf1, 3)
 portfolio.sellStock(s, 1)
 portfolio.withdrawCash(50)
 portfolio.history()
+print(portfolio)
