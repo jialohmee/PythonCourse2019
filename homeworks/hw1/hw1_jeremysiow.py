@@ -30,9 +30,9 @@ class Portfolio():	# create portfolio class
 
 	def buyMutualFund(self, fund, amount_shares):
 		if fund not in self.mf.keys():
-			self.mf[fund.name] = amount_shares
+			self.mf[fund.name] = float(format(amount_shares, '.2f'))
 		else:
-			self.mf[fund.name] += amount_shares
+			self.mf[fund.name] += float(format(amount_shares, '.2f'))
 		self.cash -= float(1) * amount_shares # $1/share for mutual funds
 		self.transactions.append("Bought " + str(amount_shares) + " shares of " + str(fund.name))
 
@@ -41,14 +41,14 @@ class Portfolio():	# create portfolio class
 		self.transactions.append("Withdrew $" + str(format(amount_cash, '.2f')))
 
 	def sellStock(self, stock, amount_shares):
-		self.stock[stock.name] -= float(amount_shares)
+		self.stock[stock.name] -= float(format(amount_shares, '.2f'))
 		sale_price = random.uniform(0.5 * stock.price, 1.5 * stock.price)
 		self.cash += sale_price * amount_shares
 		self.transactions.append("Sold " + str(amount_shares) + " shares of " + str(stock.name) + 
 			" at $" + str(format(sale_price, '.2f')) + " per share")
 
 	def sellMutualFund(self, fund, amount_shares):
-		self.mf[fund.name] -= float(amount_shares)
+		self.mf[fund.name] -= float(format(amount_shares, '.2f'))
 		sale_price = random.uniform(0.9, 1.2)
 		self.cash += sale_price * amount_shares
 		self.transactions.append("Sold " + str(amount_shares) + " shares of " + str(fund.name) +
