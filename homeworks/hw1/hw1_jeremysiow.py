@@ -32,16 +32,22 @@ class Portfolio():	# create portfolio class
 			print("You do not have enough cash")
 
 	def buyMutualFund(self, fund, amount_shares):
-		if fund not in self.mf.keys():
-			self.mf[fund.name] = float(format(amount_shares, '.2f'))
+		if self.cash >= 1 * amount_shares:
+			self.cash -= 1 * amount_shares # $1/share for mutual funds
+			self.transactions.append("Bought " + str(amount_shares) + " shares of " + str(fund.name))
+			if fund not in self.mf.keys():
+				self.mf[fund.name] = float(format(amount_shares, '.2f'))
+			else:
+				self.mf[fund.name] += float(format(amount_shares, '.2f'))
 		else:
-			self.mf[fund.name] += float(format(amount_shares, '.2f'))
-		self.cash -= float(1) * amount_shares # $1/share for mutual funds
-		self.transactions.append("Bought " + str(amount_shares) + " shares of " + str(fund.name))
-
+			print("You do not have enough cash")
+		
 	def withdrawCash(self, amount_cash):
-		self.cash -= float(amount_cash)
-		self.transactions.append("Withdrew $" + str(format(amount_cash, '.2f')))
+		if self.cash >= amount_cash:
+			self.cash -= float(amount_cash)
+			self.transactions.append("Withdrew $" + str(format(amount_cash, '.2f')))
+		else:
+			print("You do not have enough cash")
 
 	def sellStock(self, stock, amount_shares):
 		self.stock[stock.name] -= float(format(amount_shares, '.2f'))
