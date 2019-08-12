@@ -51,14 +51,14 @@ with open('test_writefile.txt', 'a') as f:
 import csv
 
 ## Open a file stream and create a CSV writer object
-with open('test_writecsv.csv', 'wb') as f:
+with open('test_writecsv.csv', 'w') as f:
   my_writer = csv.writer(f)
   for i in range(1, 100):
     my_writer.writerow([i, i-1])
 
 
 ## Now read in the csv
-with open('test_writecsv.csv', 'rb') as f:
+with open('test_writecsv.csv', 'r') as f:
   my_reader = csv.reader(f)
   mydat = []
   for row in my_reader:
@@ -92,14 +92,14 @@ with open('test_csvfields.csv', 'r') as f:
 ## pip3 install beautifulsoup4
 
 from bs4 import BeautifulSoup
-import urllib2 
+import urllib.request
 import random
 import time
 import os
 
 ## Open a web page
 web_address = 'https://polisci.wustl.edu/people/88/'
-web_page = urllib2.urlopen(web_address)
+web_page = urllib.request(web_address)
 
 ## Parse it
 soup = BeautifulSoup(web_page.read())
