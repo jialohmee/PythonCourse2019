@@ -55,9 +55,9 @@ all_a_deniz = soup_faculty_web_page[0].find_all("a")
 for i in all_a_deniz:
 	print(i)
 
-all_a_deniz.startswith("mailto")
-for i in all_a_deniz:
-	if not all_a_deniz[i].startswith("mailto")
+#all_a_deniz.startswith("mailto")
+#for i in all_a_deniz:
+#	if not all_a_deniz[i].startswith("mailto")
 
 for num, i in enumerate(all_a_deniz):
 	print(num, i)
