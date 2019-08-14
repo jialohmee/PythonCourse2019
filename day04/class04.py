@@ -99,12 +99,12 @@ import os
 
 ## Open a web page
 web_address = 'https://polisci.wustl.edu/people/88/'
-<<<<<<< HEAD
-web_page = urllib.request(web_address)
-=======
+#<<<<<<< HEAD
+#web_page = urllib.request(web_address)
+#=======
 web_page = urllib.request.urlopen(web_address)
 web_page
->>>>>>> 2cbf25ab828d257f60aafdf2b542e12ef731f4b7
+#>>>>>>> 2cbf25ab828d257f60aafdf2b542e12ef731f4b7
 
 ## Parse it
 soup = BeautifulSoup(web_page.read())
@@ -137,7 +137,7 @@ all_a_tags[57]['class']
 
 
 ## Use this info about HTML elements to grab them
-soup.find_all('a', {'class' : "card"})
+soup.find_all('div', {'class' : "dept"})
 
 ## There may be tags within tags
 sections = soup.find_all('div')
