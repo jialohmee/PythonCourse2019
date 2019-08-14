@@ -151,7 +151,6 @@ re.findall(r'^b\w*', alltext)
 re.findall(r'^.*\.$', alltext, re.MULTILINE)
 
 
-
 ## search, match, and groups
 t = '12 twelve'
 
@@ -191,7 +190,7 @@ pattern.match(r"a12 24").groups()
 
 ### Naive Bayes
 
-# pip install nltk
+#pip install nltk
 
 import nltk
 nltk.download('names')
