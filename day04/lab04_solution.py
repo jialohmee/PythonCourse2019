@@ -19,7 +19,7 @@ with open('lab04_solution.csv', 'w') as f:
   w.writeheader()
   web_address='https://polisci.wustl.edu/people/88/'
   web_page = urllib.request.urlopen(web_address)
-  all_html = BeautifulSoup(web_page.read())
+  all_html = BeautifulSoup(web_page.read(), "html.parser")
   #all_ppl = all_html.find_all("article")
   all_faculty = all_html.find_all('a', {'class': 'card'})
   for i in all_faculty:
