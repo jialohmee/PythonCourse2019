@@ -82,7 +82,7 @@ re.findall(r"\d{2}/\d{2}", x)
 x = "American's lov\we McDonalds"
 re.findall(r"\w", x)
 re.findall(r"America[a-z]*", x)
-re.findall(r"([A-Z]+\w*)\W*", alltext)
+re.findall(r"([A-Z]+\w*)\W*", x)
 
 
 
@@ -281,12 +281,10 @@ def g_features3(name):
     features["last_ie"] = True
   else:
     features["last_ie"] = False
-
   if name[-1] == "k":
     features["last_k"] = True
   else:
     features["last_k"] = False
-
   return features
 
 
@@ -340,7 +338,7 @@ classifier = nltk.NaiveBayesClassifier.train(train_set)
 
 print(nltk.classify.accuracy(classifier, test_set[:50]))
 
-classifier.show_most_informative_features(1000)
+classifier.show_most_informative_features(10)
 
 # Copyright (c) 2014 Matt Dickenson
 # 
