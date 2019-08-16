@@ -13,7 +13,7 @@ api = pollster.Api()
 
 ## not sure what a tag is!
 tags = api.tags_get() ## list of dictionary-looking objects
-
+tags
 ## check out the slugs, anyway
 for t in tags:
 	print(t.slug)
@@ -80,9 +80,10 @@ responses_clean
 import imp
 import sys
 
-sys.path.insert(0, '/Users/ryden/Dropbox/Coding/Secrets')
-imported_items = imp.load_source('goog', '/Users/ryden/Dropbox/Coding/Secrets/start_google.py')
-
+sys.path.insert(0, '/Users/jeremysiow/Documents/Documents_MBP/api_secrets')
+imported_items = imp.load_source('goog', '/Users/jeremysiow/Documents/Documents_MBP/api_secrets/start_google.py')
+sys.path
+imported_items
 gmaps = imported_items.client
 
 whitehouse = 'The White House'
@@ -216,9 +217,10 @@ len(simgroups)
 
 #pip install tweepy
 import tweepy
+import imp
 # http://docs.tweepy.org/en/v3.8.0/api.html
 
-twitter = imp.load_source('twit', '/Users/ryden/Dropbox/Coding/Secrets/start_twitter.py')
+twitter = imp.load_source('twit', '/Users/jeremysiow/Documents/Documents_MBP/api_secrets/twitter.py')
 api = twitter.client
 
 ## See rate limit
