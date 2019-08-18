@@ -117,7 +117,7 @@ print(distance['rows'][0]['elements'][0]['distance']['text'])
 #pip install gmplot
 from gmplot import gmplot
 # Google_API_Key is the custom file name I gave to my key
-from Google_API_Key import api_key as google_key
+# from Google_API_Key import api_key as google_key
 
 STL = gmaps.geocode('St. Louis')
 STL[0]['geometry']['location']
@@ -126,7 +126,7 @@ STL[0]['geometry']['location']
 ## or location and zoom level (deprecated)
 
 plot1 = gmplot.GoogleMapPlotter(38.6270025, -90.19940419999999, 13)
-plot1.apikey = google_key
+plot1.apikey = imported_items.api_key
 
 stl_places = ["Forest Park, St. Louis",
 "Missouri Botanical Garden, St. Louis",
