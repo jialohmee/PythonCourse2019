@@ -137,7 +137,7 @@ session.commit()
 
 
 # Test again... (it keeps the count in the order they entered the database)
-print str(mason.id)
+print(str(mason.id))
 
 
 # Some querying
@@ -179,7 +179,7 @@ results.first()
 results[0]
 results[1]
 
-len(results)
+len(results) # traceback 
 
 
 # why use .count()?
@@ -328,18 +328,14 @@ class Book(Base):
 
 class Author(Base):
     __tablename__ = 'authors'
-
     id = Column(Integer, primary_key=True)
     name = Column(String)
     ## what does this do?
     country_id = Column(Integer, ForeignKey('countries.id'))
-
     ## what does this do?
     books = relationship('Book', backref='author')
-
     def __init__(self, name):
       self.name = name
-    
     def __repr__(self):
       return "<Author('%s')>" % (self.name)
 
@@ -347,18 +343,14 @@ class Author(Base):
 
 class Country(Base):
     __tablename__ = 'countries'
-    
     id = Column(Integer, primary_key=True)
     name = Column(String)
     capital = Column(String)
-    
     ## what does this do?
     authors = relationship('Author', backref='country')
-      
     def __init__(self, name, capital=None):
       self.name = name
       self.capital = capital
-    
     def __repr__(self):
       return "<Country('%s')>" % (self.name)
 

@@ -237,8 +237,13 @@ for i in limit["resources"]["tweets"].keys():
 
 ## Create user objects
 don = api.get_user('realDonaldTrump')
+
+api.get_user("realDonaldTrump")
+
 don ## biiiig object 
 
+
+dir(api)
 type(don)
 dir(don)
 
@@ -298,3 +303,5 @@ for item in tweepy.Cursor(api.followers_ids, 'realDonaldTrump').items():
 	hisfollowers.append(item)
 
 len(hisfollowers)
+
+

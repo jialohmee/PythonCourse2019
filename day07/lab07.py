@@ -10,14 +10,11 @@ Base = declarative_base()
 # Schemas
 class Region(Base):
   __tablename__ = 'regions'
-
   id = Column(Integer, primary_key=True)
   name = Column(String)
   departments = relationship("Department", backref = "region")
-
   def __init__(self, name):
     self.name = name 
-
   def __repr__(self):
     return "<Region('%s')>" % self.id 
 
@@ -25,15 +22,12 @@ class Region(Base):
 
 class Department(Base):
   __tablename__ = 'departments'
-
   id = Column(Integer, primary_key=True)
   deptname = Column(String)
   region_id = Column(Integer, ForeignKey('regions.id')) 
   towns = relationship("Town", backref = "department")
-
   def __init__(self, deptname):
     self.deptname = deptname 
-
   def __repr__(self):
     return "<Department('%s')>" % self.id 
 
@@ -41,16 +35,13 @@ class Department(Base):
 
 class Town(Base):
   __tablename__ = 'towns'
-
   id = Column(Integer, primary_key=True)
   name = Column(String)
   population = Column(Integer)
   dept_id = Column(Integer, ForeignKey('departments.id'))
-
   def __init__(self, name, population):
     self.name = name 
     self.population = population
-
   def __repr__(self):
     return "<Town('%s')>" % (self.name)
 
@@ -110,6 +101,9 @@ session.commit()
 # Some example querying 
 for town in session.query(Town).order_by(Town.id):
   print(town.id, town.name, town.population)
+
+
+
 
 
 # TODO: 

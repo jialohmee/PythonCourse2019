@@ -66,6 +66,9 @@ for i in range(35):
 # Exercise:
 
 def factorial(n):
+  if n == 0:
+    return 1
+  return n * factorial(n-1)
 ##if base case:
 ##  return something
 ##else:
@@ -82,8 +85,12 @@ my_numbers = [1, 9, 8, 5, 4, 6, 0, 2, 3, 7]
 # 1) Randomize number order
 # 2) If sorted: stop; else: repeat
 
+import random
+
 def bogo_sort(numbers):
-    return answer
+  if numbers == sorted(numbers):
+      return numbers
+  return bogo_sort(random.shuffle(numbers))
 
 
 # Selection Sort
