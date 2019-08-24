@@ -143,6 +143,6 @@ txt = """
 Maybe a description here
 """
 plt.figtext(.5, .05, txt, fontsize = 10, ha = "center")
-plt.savefig('plot.pdf')
+plt.savefig('plot2.pdf')
 def insertion_sort(numbers):
     return answer

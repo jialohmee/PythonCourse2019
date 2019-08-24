@@ -11,6 +11,7 @@ import numpy as np
 ## like a normal list
 x = pd.Series([10, 100, 12, 5])
 x[0]
+x
 
 ## now columns and rows
 ## input can be lots of things
@@ -24,10 +25,11 @@ l = [[1,2,3], [3,4,5], [7,8,9]]
 df_lists = pd.DataFrame(l, columns = ["A", "B", "C"])
 df_lists.index ## row names
 df_lists.rename(index = {0:"One", 1:"Two", 2:"Three"})
+df_lists
 
 ar = np.random.randn(6,4)
 df_array = pd.DataFrame(ar, columns = ["A", "B", "C", "D"])
-
+df_array
 
 
 ## helpful commands

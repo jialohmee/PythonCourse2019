@@ -11,17 +11,22 @@ def makeLink(G, node1, node2):
 graph = {}
 graph = makeLink(graph, "a", "b")
 
-
 ## empty graph 
 ring = {} 
 
 ## number of nodes 
-n = 5 
+n = 16
+
+import math
 
 ## Add in edges with makeLink function
-for i in range(n):
-  ring = makeLink(ring, i, (i+1)%n)
-  print(ring)
+root = int(math.sqrt(n))
+for i in range(1, root+1):
+  for j in range(1, root+1):
+    if i % j == j-1:
+      ring = makeLink(ring, (i-1), (j-1))
+  #ring = makeLink(ring, i, (i+1) % n)
+  #print(ring)
 
 print(ring)
 
@@ -73,17 +78,13 @@ movies = makeLink(movies, kb, ms) # The River Wild
 movies = makeLink(movies, ah, ms) # Devil Wears Prada
 movies = makeLink(movies, ah, jr) # Valentine's Day
 
-
-
-
-
 def findPath(graph, start, end, path=[]):
     ## create list
     path = path + [start]
     ## base case, reached end
     if start == end:
         return path
-    if not graph.has_key(start):
+    if not graph.keys():
         return None
     ## for each connection to starting node
     for node in graph[start]:
@@ -109,22 +110,45 @@ movies[kb].keys() ## found meryl streep!
 ## jr -- ah -- ms
 ## jr -- kb -- ms
 
-
-
-
 ## TODO: implement findAllPaths() to find all paths between two nodes
 ## allPaths = findAllPaths(movies, jr, ms)
 ## for path in allPaths:
 ##   print path
 
+def findAllPaths(graph, start, end, path=[]):
+    ## create list
+    path = path + [start]
+    paths = []
+    ## base case, reached end
+    if start == end:
+        return path
+    if not graph.keys():
+        return None
+    ## for each connection to starting node
+    for node in graph[start]:
+        ## check if it is already in path
+        if node not in path:
+          paths.append(findPath(graph, node, end, path))
+          continue
+    ## if not, call recursively, thus adding node to path
+    ## carry around path object with you
+    return paths
 
 
+all_paths = findAllPaths(movies, jr, ms)
 
 
 
 ## TODO: implement findShortestPath() to print shorest path between actors
 ## print findShortestPath(movies, ms, ss)
 
+def findShortestPath(path_list):
+  lengths = []
+  for path in path_list:
+    lengths.append(len(path))
+  return path_list[lengths.index(min(lengths))]
+
+findShortestPath(all_paths)
 
 
 
